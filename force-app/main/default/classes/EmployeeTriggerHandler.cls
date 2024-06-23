@@ -1,3 +1,4 @@
+// A handler class to calculate the employees with the minimum and maximum salary associated with a firm
 public with sharing class EmployeeTriggerHandler {
     public static void calculateMinMaxSalaryInsert(List<Employee__c> listOfNewEmployees, Map<Id, Employee__c> mapOfNewEmployees) {
         Set<Id> techFirmIds = new Set<Id>();
