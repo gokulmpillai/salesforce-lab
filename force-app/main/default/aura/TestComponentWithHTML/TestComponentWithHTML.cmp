@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <p class = 'test1'>Hello World!!!</p>
+    <br/>
+    <lightning:formattedText value= "Hello World from Lightning Web Component"/>
+    <div class = 'test2'>
+        <p>Hello World from Div</p>
+        <div class ='test3'>
+            <p>Damnn!!!</p>
+            <div class = 'test4'>
+            <h1>Damn!!!</h1>
+        </div>
+        </div>
+    </div>
+    <lightning:button variant="brand" label="Button" title="No Action"></lightning:button>
+</aura:component>

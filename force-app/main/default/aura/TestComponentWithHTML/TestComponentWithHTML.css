@@ -1,0 +1,13 @@
+.THIS.test1{
+    color: green;
+    text-shadow: 3px 2px red;
+}
+.THIS.test2{
+    color: red;   
+}
+.THIS .test3{
+    color: orange;
+}
+.THIS .test4{
+    color: yellow;
+}

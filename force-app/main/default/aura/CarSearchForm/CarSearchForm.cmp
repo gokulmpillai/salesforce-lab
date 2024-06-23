@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name="buttonLabel" type="String" default="Search"/>
+    <aura:attribute name="newLabel" type="String" default="New Button"/>
+    <aura:attribute name="carTypes" type="String[]" default ="Sports Car, Luxury Car, Van, Any Car"/>
+    <lightning:layout horizontalAlign = "center" >
+        <lightning:layoutitem padding="around-medium" class="slds-form slds-form_horizontal">     
+            <lightning:select name="select" label="CarType" aura:id="selectvalue" variant="label-hidden" value="Sports Car">
+                <aura:iteration items="{!v.carTypes}" var ="carType">
+                    <option value="{!carType}" text="{!carType}"/>
+    			</aura:iteration>
+            </lightning:select>
+        </lightning:layoutitem>  
+        <lightning:layoutitem padding="around-medium" class="slds-form slds-form_horizontal">   
+            <lightning:button variant="Brand" label="{!v.buttonLabel}" onClick="{!c.onClickEvent}"/>
+            <lightning:button variant="Neutral" label="{#v.newLabel}"/>
+        </lightning:layoutitem>
+    </lightning:layout>
+</aura:component>
