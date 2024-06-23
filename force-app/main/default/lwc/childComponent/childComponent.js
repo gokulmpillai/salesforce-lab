@@ -5,9 +5,12 @@ export default class ChildComponent extends LightningElement {
     message;
 
     onclickHandler(event){
-        this.dispatchEvent(new CustomEvent('sendmessage', { detail :{
-            message : 'Hello from Child Component!'
-        }}), {bubbles :true, composed : true});
+        this.dispatchEvent(new CustomEvent('sendmessage', { 
+            bubbles :true, 
+            composed: true, 
+            detail :{
+            message : 'Hello from Child Component!',
+        }}));
     }
 
 }

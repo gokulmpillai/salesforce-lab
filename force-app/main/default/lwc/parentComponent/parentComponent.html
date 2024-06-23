@@ -1,8 +1,8 @@
 <template>
-    <lightning-card title="Child to Parent Communication">
-        <div class="slds-p-around_medium">
+    <div class="slds-p-around_medium">
             <c-child-component onsendmessage={messageFromChild}></c-child-component>
-        </div>
-        <p class="slds-p-around_medium"> Here is the message from child: {customMessage}</p>
-    </lightning-card>
+    </div>
+        <br>
+        <lightning-button class="slds-p-around_medium" label="Parent Custom Event" variant="brand" onclick={messageToGrandParent}></lightning-button>
+        <p class="slds-p-around_medium"> Here is the message from child on parent: {customMessage}</p>
 </template>

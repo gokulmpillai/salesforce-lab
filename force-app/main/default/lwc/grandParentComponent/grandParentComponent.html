@@ -1,0 +1,7 @@
+<template>
+    <lightning-card title="GrandParent Component">
+        <c-parent-component onparentevent={messageFromParent} onsendmessage={messageFromChild}></c-parent-component>
+        <p class="slds-p-around_medium"> Here is the message from parent on grandparent: {parentMessage}</p>
+        <p class="slds-p-around_medium"> Here is the message from child on grandparent: {childMessage}</p>
+    </lightning-card>
+</template>
