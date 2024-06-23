@@ -1,6 +1,6 @@
-public class OpportunityLineItemTriggerHandler {
+//A handler class to calculate the total products associated with the account whenever a product is added    
 
-    
+public class OpportunityLineItemTriggerHandler {
     public static void countTotalProductsOnInsert(List<OpportunityLineItem> insertedOli, Map<Id, OpportunityLineItem> mapOfOli){
         Set<Id> opportunityIds = new Set<Id>();
 		Map<Id, Integer> mapOfOpportunityProductCount = new Map<Id, Integer>();
