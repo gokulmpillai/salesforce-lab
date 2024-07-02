@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Newly Created Cases">
+        <template for:each={results} for:item="result">
+            <div key={result.caseId}>            
+                <p>{result.caseNumber}</p>
+                <p>{result.description}</p>
+            </div>
+        </template>
+    </lightning-card>
+</template>
