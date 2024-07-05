@@ -1,8 +1,10 @@
 <template>
     <lightning-card title="Newly Created Cases">
         <template for:each={results} for:item="result">
-            <div key={result.caseId}>            
+            <div key={result.caseId} class="slds-m-around_medium">
+                <b>Case Number</b><br>          
                 <p>{result.caseNumber}</p>
+                <b>Case description</b><br>          
                 <p>{result.description}</p>
             </div>
         </template>
