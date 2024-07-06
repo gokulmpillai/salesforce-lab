@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Bulk Create Contacts">
+        <template for:each={elements} for:item="element" for:index="index">
+            <lightning-record-edit-form key={element.id} object-api-name="Contact">
+                <lightning-messages></lightning-messages>
+                <lightning-layout>
+                    <lightning-layout-item class="button-border">
+                        <lightning-icon style="padding-right: 10px;" icon-name='utility:add' size="small"
+                            data-id={element.id} data-index={index} onclick={addHandler}></lightning-icon>
+                        <lightning-icon icon-name='utility:delete' size="small" data-id={element.id} data-index={index}
+                            onclick={deleteHandler}></lightning-icon>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="3">
+                        <lightning-input-field field-name="FirstName" label="Enter First Name"></lightning-input-field>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="3">
+                        <lightning-input-field field-name="LastName" label="Enter Last Name"></lightning-input-field>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="3">
+                        <lightning-input-field field-name="Email" label="Enter Email"></lightning-input-field>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-record-edit-form>
+        </template>
+        <lightning-button name="submit" label="Submit" variant="brand" style="padding-left: 40%; padding-top:10px;"
+            onclick={submitHandler}>
+        </lightning-button>
+    </lightning-card>
+</template>
