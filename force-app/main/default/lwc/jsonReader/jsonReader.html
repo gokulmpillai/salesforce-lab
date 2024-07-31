@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Bulk Record Import">
+        <div class="slds-p-around_medium">
+            <lightning-file-upload label="Upload JSON File" accept={acceptedFormat} onuploadfinished={uploadHandler} multiple>
+            </lightning-file-upload>
+            <br>
+            <lightning-button label="Submit" variant="Brand" onclick={submitHandler}></lightning-button> 
+        </div>
+    </lightning-card>
+</template>
