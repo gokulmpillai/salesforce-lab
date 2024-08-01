@@ -12,7 +12,7 @@
 
 public with sharing class JSONReaderController {
     @AuraEnabled
-    public static void createRecords(String contentVersionId){
+    public static ResultWrapper createRecords(String contentVersionId){
         try {
             List<Account> listOfAccounts = new List<Account>();
             List<Contact> listOfContacts = new List<Contact>();
@@ -53,10 +53,15 @@ public with sharing class JSONReaderController {
                     listOfContacts.add(conObj);
                 }
             }
-
-
             insert listOfContacts;
+        
+        //Returning the number of records inserted back to lwc
+        ResultWrapper res = new ResultWrapper();
+        res.accountCount = listOfAccounts.size();
+        res.contactCount = listOfContacts.size();
 
+        return res;
+        
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
@@ -80,5 +85,12 @@ public with sharing class JSONReaderController {
         public string lastName;
         @AuraEnabled
         public string email;
+    }
+
+    public class ResultWrapper{
+        @AuraEnabled
+        public integer accountCount;
+        @AuraEnabled
+        public integer contactCount;
     }
 }

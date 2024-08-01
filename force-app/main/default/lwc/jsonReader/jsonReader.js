@@ -1,8 +1,15 @@
 import { LightningElement } from 'lwc';
 import createRecords from '@salesforce/apex/JSONReaderController.createRecords';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
+
 export default class JsonReader extends LightningElement {
 
     contentVersionId;
+    showResults=false;
+    totalAccounts=0;
+    totalContacts=0;
+    
 
     get acceptedFormat(){ 
         return  ['.json'];
@@ -18,7 +25,11 @@ export default class JsonReader extends LightningElement {
     submitHandler(){
         createRecords({contentVersionId: this.contentVersionId})
             .then((result) => {
-                console.log('Success!!!!')
+                if(result){
+                    this.showResults =true;
+                    this.totalAccounts = result.accountCount;
+                    this.totalContacts = result.contactCount;
+                }
             })
             .catch((error)=> {
                 console.log('Error');

@@ -6,5 +6,12 @@
             <br>
             <lightning-button label="Submit" variant="Brand" onclick={submitHandler}></lightning-button> 
         </div>
+        <template if:true={showResults}>
+            <div class="slds-p-around_medium slds-box">
+                <h3>Total Accounts Created: {totalAccounts}</h3>
+                <h3>Total Contacts Created: {totalContacts}</h3>
+            </div>
+        </template>
+
     </lightning-card>
 </template>
