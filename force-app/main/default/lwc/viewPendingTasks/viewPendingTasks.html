@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Pending Tasks">
+        <div class="slds-p-around_medium">
+            <template lwc:if={showData}>
+                <template for:each={data} for:item="task">
+                    <div key={task.Id} class="slds-box slds-m-bottom_small">
+                        <div class="slds-list_horizontal wrapped-content" style="font-size: 20px;">
+                            {task.description}
+                            <lightning-button-icon class="slds-m-left_medium" style="padding-left: 10px;"
+                                data-id={task.Id} variant="brand" icon-name="utility:delete" 
+                                onclick={taskCompleteHandler}></lightning-button-icon>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            <template lwc:else>
+                <p>No tasks created yet</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

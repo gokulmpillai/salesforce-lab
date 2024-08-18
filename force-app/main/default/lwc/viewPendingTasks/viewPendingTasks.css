@@ -1,0 +1,10 @@
+.wrapped-content {
+    list-style-position: inside; 
+    padding-left: 0;  
+    white-space: normal;
+    overflow-wrap: anywhere; 
+    word-wrap: break-word;
+    overflow-wrap: anywhere;   
+    max-width: 100%;        
+}
+
