@@ -24,27 +24,36 @@ export default class CreateToDoList extends LightningElement {
         const fields = {};
         fields[DESCRIPTION_FIELD.fieldApiName] = this.data;
         const recordInput = {"apiName": NOTE_OBJECT.objectApiName, fields};
+        let inputElement = this.template.querySelector('lightning-input');
+        console.log('Input Element' +inputElement);
 
-        createRecord(recordInput)
-        .then((result) => {
-            this.createdRecordId = result.id;
-            console.log('Create Record Result: '+ JSON.stringify(result.id));
-            this.dispatchEvent(new ShowToastEvent({
-                title: 'Sucess',
-                message: 'Note was created successfully!!!',
-                variant: 'success',
-            }))
-        }).then(() => {
-            let payload = {
-                messageToSend: this.data,
-                createdRecordId: this.createdRecordId,
-            }
-            console.log('Payload: '+ JSON.stringify(payload));
-            publish(this.messageContext, messageChannel, payload);
-        })
-        .catch((error)=>{
-            console.log('Record creation error: ' + error.body.message);
-        })
-
+        if(this.data && this.data.trim() != ''){
+            inputElement.setCustomValidity('');
+            inputElement.reportValidity();
+            createRecord(recordInput)
+            .then((result) => {
+                this.createdRecordId = result.id;
+                console.log('Create Record Result: '+ JSON.stringify(result.id));
+                this.dispatchEvent(new ShowToastEvent({
+                    title: 'Sucess',
+                    message: 'Note was created successfully!!!',
+                    variant: 'success',
+                }))
+            }).then(() => {
+                let payload = {
+                    messageToSend: this.data,
+                    createdRecordId: this.createdRecordId,
+                }
+                console.log('Payload: '+ JSON.stringify(payload));
+                publish(this.messageContext, messageChannel, payload);
+            })
+            .catch((error)=>{
+                console.log('Record creation error: ' + error.body.message);
+            })
+        }
+        else{
+            inputElement.setCustomValidity('Please enter a note');
+            inputElement.reportValidity();
+        }
     }
 }
