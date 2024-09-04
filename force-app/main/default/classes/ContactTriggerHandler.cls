@@ -19,7 +19,7 @@ public class ContactTriggerHandler {
         for(Contact con: newContactList){
             if(!String.isEmpty(con.Email)){
                 if(contactEmailIds.contains(con.Email)){
-                    con.addError('A Contact with this email address already exists. Please check your information and try again.');
+                    con.Email.addError('A Contact with this email address already exists. Please check your information and try again.');
                 }
             }
         }
@@ -37,7 +37,7 @@ public class ContactTriggerHandler {
             if(!String.isEmpty(conObj.Email) && (con !=null)){
                 if(conObj.Email == con.Email){
                     //if(existingEmailMap.get(conObj.Email) != conObj.Id){
-                    conObj.addError('A Contact with this email address already exists. Please check your information and try again.');
+                    conObj.Email.addError('A Contact with this email address already exists. Please check your information and try again.');
                 }
             }
             //}
