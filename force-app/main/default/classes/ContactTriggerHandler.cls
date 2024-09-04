@@ -1,20 +1,24 @@
 public class ContactTriggerHandler {
     public static void duplicateCheckForInsertUndelete(List<Contact> newContactList){
         Set<String> contactEmailIds = new Set<String>();
-        for(Contact con : newContactList){
-            if(!String.isEmpty(con.Email)){
-                contactEmailIds.add(con.Email);
-            }
-        }
+        // for(Contact con : newContactList){
+        //     if(!String.isEmpty(con.Email)){
+        //         contactEmailIds.add(con.Email);
+        //     }
+        // }
         
-        Map<String, Contact> existingEmailIdMap = new Map<String, Contact>();
-        for(Contact con : [SELECT Id, Name, Email FROM Contact WHERE Email IN :contactEmailIds]){
-            existingEmailIdMap.put(con.Email, con);
+        // Map<String, Contact> existingEmailIdMap = new Map<String, Contact>();
+        // for(Contact con : [SELECT Id, Name, Email FROM Contact WHERE Email IN :contactEmailIds]){
+        //     existingEmailIdMap.put(con.Email, con);
+        // }
+
+        for(Contact con : [SELECT Id, Name, Email FROM Contact WHERE Email !=NULL]){
+            contactEmailIds.add(con.Email);
         }
         
         for(Contact con: newContactList){
             if(!String.isEmpty(con.Email)){
-                if(existingEmailIdMap.containsKey(con.Email)){
+                if(contactEmailIds.contains(con.Email)){
                     con.addError('A Contact with this email address already exists. Please check your information and try again.');
                 }
             }
