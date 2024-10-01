@@ -1,3 +1,9 @@
+/*  Component Type: Apex Class
+    Description: Apex class to prevent the creation of duplicate contacts in the system
+    Author: Gokul Pillai
+    Created Date: 8/31/2024
+*/
+    
 public class ContactTriggerHandler {
     public static void duplicateCheckForInsertUndelete(List<Contact> newContactList){
         Set<String> contactEmailIds = new Set<String>();
