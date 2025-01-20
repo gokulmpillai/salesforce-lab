@@ -1,0 +1,13 @@
+<template>
+    <lightning-card icon-name="standard:account" title="Accounts" variant="base">
+        <div class="grid-container">
+            <template for:each={accounts.data} for:item="account">
+                <div key={account.Id} class="grid-item">
+                    <div class="box">
+                        <span class="box-text">{account.Name}</span>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
