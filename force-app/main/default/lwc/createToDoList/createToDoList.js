@@ -19,14 +19,19 @@ export default class CreateToDoList extends LightningElement {
         // console.log(this.data);
     }
 
+
+    //handler to create a to do list item which will be stored in a custom object
     createToDoHandler(){
         console.log('To Do Handler');
         const fields = {};
         fields[DESCRIPTION_FIELD.fieldApiName] = this.data;
+        //creating input for to be consumed by createRecord from uiRecordApi 
         const recordInput = {"apiName": NOTE_OBJECT.objectApiName, fields};
         let inputElement = this.template.querySelector('lightning-input');
         console.log('Input Element' +inputElement);
-
+        /*logic to check valid input, if the input field is filled and the 'Add' button is clicked it would show a success toast message
+        else if the user tries to submit the note without adding any value inside the text box
+        */
         if(this.data && this.data.trim() != ''){
             inputElement.setCustomValidity('');
             inputElement.reportValidity();
